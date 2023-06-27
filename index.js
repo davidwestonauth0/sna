@@ -53,6 +53,7 @@ app.get('/', verifyInputToken, csrfProtection, (req, res) => {
     fields: {},
     action: req.originalUrl.split('?')[0]
   };
+  data.fields.sna_url = req.tokenPayload.snaUrl;
 
     console.log(req.tokenPayload);
 
@@ -96,7 +97,14 @@ function renderProfileView(data) {
 
 <head>
 </head>
-<body></body></html>`;
+<body>
+<script>
+fetch("<%= fields.sna_url %>")
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+</script>
+
+</body></html>`;
 
   return ejs.render(template, data);
 }
