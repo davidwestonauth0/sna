@@ -43,7 +43,7 @@ app.post('/callback',  (req, res) => {
 
 
 app.post('/', (req, res) => {
-    var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject);
+    var sessionToken = createOutputToken(req.body.sna_response, req.session.state, req.session.subject);
 
            const formData = _.omit(sessionToken, '_csrf');
           const HTML = renderReturnView({
