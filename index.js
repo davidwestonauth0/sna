@@ -47,6 +47,11 @@ app.post('/', (req, res) => {
     request.post({ url: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${sessionToken}` }
                    , function(error, response, body){
        //console.log(body);
+             // clear session
+             req.session = null;
+
+             res.set('Content-Type', 'text/html');
+             res.status(200).send(HTML);
     });
 
 
