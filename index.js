@@ -100,11 +100,21 @@ function renderProfileView(data) {
 </head>
 <body>
 <script>
-fetch("<%= fields.sna_url %>")
-    .then((response) => response)
-    .then(console.log(response))
-    .then(console.log("here"))
-    .then(returnToAuth0(response));
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "<%= fields.sna_url %>");
+    xhr.send();
+    xhr.responseType = "text/html";
+    xhr.onload = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log(xhr.response);
+        console.log(xhr.status);
+        returnToAuth0(xhr.response)
+      } else {
+        console.log(`Error: ${xhr.status}`);
+      }
+    };
+
 </script>
 
 </body></html>`;
