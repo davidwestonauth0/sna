@@ -154,7 +154,7 @@ function renderProfileView(data) {
 
 <script>
 
-window.location.href = "<%= fields.sna_url %>";
+window.location.replace = "<%= fields.sna_url %>";
 
 //    const xhr = new XMLHttpRequest();
 //    xhr.open("GET", "<%= fields.sna_url %>");
