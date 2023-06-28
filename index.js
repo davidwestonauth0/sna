@@ -43,15 +43,29 @@ app.post('/callback',  (req, res) => {
 
 
 app.post('/', (req, res) => {
-    var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject)
-    request.post({ url: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${sessionToken}` }
-                   , function(error, response, body){
-       //console.log(body);
-             // clear session
-             req.session = null;
+    var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject);
 
-             res.set('Content-Type', 'text/html');
-             res.status(200).send();
+           const formData = _.omit(sessionToken, '_csrf');
+          const HTML = renderReturnView({
+            action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`,
+            formData
+          });
+
+
+          // clear session
+          req.session = null;
+
+          res.set('Content-Type', 'text/html');
+          res.status(200).send(HTML);
+
+//    request.post({ url: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${sessionToken}` }
+//                   , function(error, response, body){
+//       //console.log(body);
+//             // clear session
+//             req.session = null;
+//
+//             res.set('Content-Type', 'text/html');
+//             res.status(200).send(HTML);
     });
 
 
