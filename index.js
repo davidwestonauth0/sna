@@ -6,6 +6,7 @@ const cookieSession = require('cookie-session');
 const csurf = require('csurf');
 const moment = require('moment');
 const jwt = require('jsonwebtoken');
+const request = require('request');
 const ejs = require('ejs');
 const _ = require('lodash');
 
@@ -43,7 +44,6 @@ app.post('/callback',  (req, res) => {
 
 app.post('/', (req, res) => {
     var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject)
-    var request = require('request');
     request.post({ url: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${sessionToken}` }
                    , function(error, response, body){
        //console.log(body);
