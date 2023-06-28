@@ -169,8 +169,16 @@ async function hitSna(url) {
     console.log(error.name === 'AbortError');
   }
 }
-var response = hitSna("<%= fields.sna_url %>");
-console.log(response);
+//var response = hitSna("<%= fields.sna_url %>");
+//console.log(response);
+
+const request = new XMLHttpRequest();
+request.open("GET", "<%= fields.sna_url %>", false); // `false` makes the request synchronous
+request.send(null);
+
+if (request.status === 200) {
+  console.log(request.responseText);
+}
 //window.location.replace = "<%= fields.sna_url %>";
 
 //    const xhr = new XMLHttpRequest();
