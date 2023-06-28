@@ -41,6 +41,16 @@ app.post('/callback',  (req, res) => {
 });
 
 
+app.post('/', parseBody, csrfProtection, (req, res) => {
+    var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject, req.body.SECRET)
+    var request = require('request');
+    request.post({ url: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${sessionToken}` }
+                   , function(error, response, body){
+       //console.log(body);
+    });
+
+
+});
 
 
 app.get('/', verifyInputToken, csrfProtection, (req, res) => {
@@ -54,7 +64,7 @@ app.get('/', verifyInputToken, csrfProtection, (req, res) => {
     subject: req.tokenPayload.sub,
     csrfToken: req.csrfToken(),
     fields: {},
-    action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`
+    action: req.originalUrl.split('?')[0]
   };
   data.fields.sna_url = req.tokenPayload.snaUrl;
 
@@ -76,6 +86,20 @@ const parseBody = bodyParser.urlencoded({ extended: false });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 // middleware functions
+
+function createOutputToken(sna_result, state, subject) {
+
+  var payload = {}
+
+  payload["iat"] = new Date();
+  payload["state"] = state;
+  payload["sub"] = subject;
+  payload["exp"] = new Date() + (5*600);
+  payload["sna_result"] = sna_result;
+  encoded = jwt.encode(payload, process.env.SECRET, algorithm="HS256")
+  return encoded
+
+}
 
 function verifyInputToken(req, res, next) {
   const options = {
