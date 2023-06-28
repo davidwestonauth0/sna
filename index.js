@@ -119,7 +119,11 @@ function renderProfileView(data) {
       if (xhr.readyState == 4 && xhr.status == 200) {
         console.log(xhr.response);
         console.log(xhr.status);
-        document.getElementById('sna_response').value = xhr.response;
+        var responseMessage = xhr.response;
+        if (responseMessage === "") {
+            responseMessage = "Unknown";
+        }
+        document.getElementById('sna_response').value = responseMessage;
         var form = document.getElementById('return_form');
         form.submit();
       } else {
