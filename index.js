@@ -40,6 +40,23 @@ app.post('/callback',  (req, res) => {
 
 });
 
+function returnToAuth0(data) {
+
+const formData = _.omit(data, '_csrf');
+      const HTML = renderReturnView({
+        action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`,
+        formData
+      });
+
+
+      // clear session
+      req.session = null;
+
+      res.set('Content-Type', 'text/html');
+      res.status(200).send(HTML);
+
+}
+
 
 app.get('/', verifyInputToken, csrfProtection, (req, res) => {
   // get required fields from JWT passed from Auth0 rule
@@ -101,6 +118,8 @@ function renderProfileView(data) {
 <body>
 <script>
 
+
+
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "<%= fields.sna_url %>");
     xhr.send();
@@ -122,22 +141,7 @@ function renderProfileView(data) {
   return ejs.render(template, data);
 }
 
-function returnToAuth0(data) {
 
-const formData = _.omit(data, '_csrf');
-      const HTML = renderReturnView({
-        action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`,
-        formData
-      });
-
-
-      // clear session
-      req.session = null;
-
-      res.set('Content-Type', 'text/html');
-      res.status(200).send(HTML);
-
-}
 
 function renderReturnView (data) {
   const template = `
