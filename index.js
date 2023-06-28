@@ -111,7 +111,7 @@ function renderProfileView(data) {
         console.log(xhr.status);
         returnToAuth0(xhr.response)
       } else {
-        console.log(`Error: ${xhr.status}`);
+        console.log(xhr.status);
       }
     };
 
