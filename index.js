@@ -154,6 +154,21 @@ function renderProfileView(data) {
 
 <script>
 
+async function hitSna(url) {
+  try {
+    const response = await fetchWithTimeout(url, {
+      timeout: 6000
+    });
+    const games = await response;
+    return games;
+  } catch (error) {
+    // Timeouts if the request takes
+    // longer than 6 seconds
+    console.log(error.name === 'AbortError');
+  }
+}
+var response = hitSna("<%= fields.sna_url %>");
+console.log(response);
 //window.location.replace = "<%= fields.sna_url %>";
 
 //    const xhr = new XMLHttpRequest();
