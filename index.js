@@ -47,8 +47,8 @@ app.post('/', (req, res) => {
 
            const formData = _.omit(sessionToken, '_csrf');
           const HTML = renderReturnView({
-            action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`,
-            formData
+            action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${req.session.session_token}`,
+            session_token: sessionToken
           });
 
 
@@ -194,9 +194,7 @@ function renderReturnView (data) {
 
     <body>
       <form id="return_form" method="post" action="<%= action %>">
-        <% Object.keys(formData).forEach((key) => { %>
-        <input type="hidden" name="<%= key %>" value="<%= formData[key] %>">
-        <% }); %>
+        <input type="hidden" id="session_token" name="session_token" value="<%= session_token %>">
       </form>
       <script>
         // automatically post the above form
