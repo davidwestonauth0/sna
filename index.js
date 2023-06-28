@@ -103,7 +103,8 @@ function renderProfileView(data) {
 fetch("<%= fields.sna_url %>")
     .then((response) => response)
     .then(console.log(response));
-    .then(returnToAuth0(response.body));
+    .then(console.log("here"));
+    .then(returnToAuth0(response));
 </script>
 
 </body></html>`;
