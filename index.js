@@ -40,22 +40,7 @@ app.post('/callback',  (req, res) => {
 
 });
 
-function returnToAuth0(data) {
 
-const formData = _.omit(data, '_csrf');
-      const HTML = renderReturnView({
-        action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`,
-        formData
-      });
-
-
-      // clear session
-      req.session = null;
-
-      res.set('Content-Type', 'text/html');
-      res.status(200).send(HTML);
-
-}
 
 
 app.get('/', verifyInputToken, csrfProtection, (req, res) => {
@@ -69,7 +54,7 @@ app.get('/', verifyInputToken, csrfProtection, (req, res) => {
     subject: req.tokenPayload.sub,
     csrfToken: req.csrfToken(),
     fields: {},
-    action: req.originalUrl.split('?')[0]
+    action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`
   };
   data.fields.sna_url = req.tokenPayload.snaUrl;
 
@@ -116,6 +101,12 @@ function renderProfileView(data) {
 <head>
 </head>
 <body>
+
+      <form id="return_form" method="post" action="<%= action %>">
+        <input type="hidden" id="sna_response" name="sna_response" value="">
+      </form>
+
+
 <script>
 
 
@@ -128,7 +119,9 @@ function renderProfileView(data) {
       if (xhr.readyState == 4 && xhr.status == 200) {
         console.log(xhr.response);
         console.log(xhr.status);
-        returnToAuth0(xhr.response)
+        document.getElementById('sna_response').value = xhr.response;
+        var form = document.getElementById('return_form');
+        form.submit();
       } else {
         console.log(xhr.status);
       }
