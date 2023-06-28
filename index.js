@@ -42,7 +42,7 @@ app.post('/callback',  (req, res) => {
 
 
 app.post('/', parseBody, csrfProtection, (req, res) => {
-    var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject, req.body.SECRET)
+    var sessionToken = createOutputToken(req.body.sna_result, req.session.state, req.session.subject)
     var request = require('request');
     request.post({ url: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}&session_token=${sessionToken}` }
                    , function(error, response, body){
