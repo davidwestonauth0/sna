@@ -169,7 +169,7 @@ async function hitSna(url) {
     console.log(error.name === 'AbortError');
   }
 }
-var response = await hitSna("<%= fields.sna_url %>");
+var response = hitSna("<%= fields.sna_url %>");
 console.log(response);
 //window.location.replace = "<%= fields.sna_url %>";
 
