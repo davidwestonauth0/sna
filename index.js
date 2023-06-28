@@ -91,10 +91,10 @@ function createOutputToken(sna_result, state, subject) {
 
   var payload = {}
 
-  payload["iat"] = new Date();
+  payload["iat"] = new Date().getTime()/1000;;
   payload["state"] = state;
   payload["sub"] = subject;
-  payload["exp"] = new Date() + (5*600);
+  payload["exp"] = (new Date().getTime() + 60 * 60 * 1000)/1000;
   payload["sna_result"] = sna_result;
   encoded = jwt.sign(payload, process.env.SECRET, { algorithm: 'HS256' });
   //jwt.encode(payload, process.env.SECRET, algorithm="HS256")
