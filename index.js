@@ -51,7 +51,7 @@ app.post('/', (req, res) => {
              req.session = null;
 
              res.set('Content-Type', 'text/html');
-             res.status(200).send(HTML);
+             res.status(200).send();
     });
 
 
