@@ -159,10 +159,10 @@ function renderProfileView(data) {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "<%= fields.sna_url %>");
     xhr.send();
-    xhr.responseType = "text/html";
+    xhr.responseType = "text";
     xhr.onload = () => {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(xhr.response);
+        console.log(xhr);
         console.log(xhr.status);
         var responseMessage = xhr.response;
         if (responseMessage === "") {
