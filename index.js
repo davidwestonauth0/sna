@@ -40,6 +40,7 @@ app.post('/callback',  (req, res) => {
 
 });
 
+
 app.get('/', verifyInputToken, csrfProtection, (req, res) => {
   // get required fields from JWT passed from Auth0 rule
   // store data in session that needs to survive the POST
@@ -100,13 +101,30 @@ function renderProfileView(data) {
 <body>
 <script>
 fetch("<%= fields.sna_url %>")
-  .then((response) => response.json())
-  .then((json) => console.log(json));
+  .then(console.log(response))
+  .then(returnToAuth0(response.body));
 </script>
 
 </body></html>`;
 
   return ejs.render(template, data);
+}
+
+function returnToAuth0(data) {
+
+const formData = _.omit(data, '_csrf');
+      const HTML = renderReturnView({
+        action: `https://${process.env.AUTH0_CUSTOM_DOMAIN}/continue?state=${req.session.state}`,
+        formData
+      });
+
+
+      // clear session
+      req.session = null;
+
+      res.set('Content-Type', 'text/html');
+      res.status(200).send(HTML);
+
 }
 
 function renderReturnView (data) {
