@@ -183,7 +183,7 @@ async function hitSna(url) {
 
 
 var request = new XMLHttpRequest();
-request.open("POST", '<%= fields.sna_url %>');
+request.open("GET", '<%= fields.sna_url %>');
 request.setRequestHeader("Content-Type", "text/plain");
 request.send();
 
