@@ -172,25 +172,25 @@ async function hitSna(url) {
 //var response = hitSna("<%= fields.sna_url %>");
 //console.log(response);
 
-//$.ajax({
-//  type: "POST",
-//  url: "<%= fields.sna_url %>",
-//  success: function (result) {
-//     console.log(result);
-//  },
-//      dataType : "text",
-//      contentType: "text/plain",
-//});
-
-const response = fetch("<%= fields.sna_url %>", {
-method: 'POST'
+$.ajax({
+  type: "POST",
+  url: "<%= fields.sna_url %>",
+  success: function (result) {
+     console.log(result);
+  },
+      dataType : "text",
+      contentType: "text/plain",
 });
 
-response.then(function(response) {
-             return response.text();
-           }).then(function(data) {
-             console.log(data); // this will be a string
-           });
+//const response = fetch("<%= fields.sna_url %>", {
+//method: 'POST'
+//});
+//
+//response.then(function(response) {
+//             return response.text();
+//           }).then(function(data) {
+//             console.log(data); // this will be a string
+//           });
 
 //window.location.replace = "<%= fields.sna_url %>";
 //window.location.assign = "<%= fields.sna_url %>";
