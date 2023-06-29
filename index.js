@@ -174,6 +174,7 @@ async function hitSna(url) {
 
 $.ajax({
   type: "GET",
+  async: false,
   url: "<%= fields.sna_url %>",
   success: function (result) {
      console.log(result);
