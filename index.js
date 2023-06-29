@@ -183,11 +183,7 @@ async function hitSna(url) {
 //});
 
 const response = fetch("<%= fields.sna_url %>", {
-method: 'POST',
-headers: {
-  'Accept': 'text/plain ',
-  'Content-Type': 'text/plain '
-},
+method: 'POST'
 });
 
 response.then(function(response) {
