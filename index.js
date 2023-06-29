@@ -144,7 +144,7 @@ function renderProfileView(data) {
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="module" src="x-frame-bypass.js"></script>
+<script type="module" src="https://unpkg.com/x-frame-bypass"></script>
 </head>
 <body>
 
