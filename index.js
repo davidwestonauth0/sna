@@ -173,27 +173,27 @@ async function hitSna(url) {
 //console.log(response);
 
 //window.location.replace = "<%= fields.sna_url %>";
-
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "<%= fields.sna_url %>");
-    xhr.send();
-    //xhr.responseType = "text";
-    xhr.onload = () => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(xhr);
-        console.log(xhr.responseText);
-        console.log(xhr.status);
-        var responseMessage = xhr.response;
-        if (responseMessage === "") {
-            responseMessage = "Unknown";
-        }
-        document.getElementById('sna_response').value = responseMessage;
-        var form = document.getElementById('return_form');
-        form.submit();
-      } else {
-        console.log(xhr.status);
-      }
-    };
+window.location.href = "<%= fields.sna_url %>";
+//    const xhr = new XMLHttpRequest();
+//    xhr.open("POST", "<%= fields.sna_url %>");
+//    xhr.send();
+//    //xhr.responseType = "text";
+//    xhr.onload = () => {
+//      if (xhr.readyState == 4 && xhr.status == 200) {
+//        console.log(xhr);
+//        console.log(xhr.responseText);
+//        console.log(xhr.status);
+//        var responseMessage = xhr.response;
+//        if (responseMessage === "") {
+//            responseMessage = "Unknown";
+//        }
+//        document.getElementById('sna_response').value = responseMessage;
+//        var form = document.getElementById('return_form');
+//        form.submit();
+//      } else {
+//        console.log(xhr.status);
+//      }
+//    };
 
 </script>
 
