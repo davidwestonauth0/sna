@@ -176,16 +176,16 @@ async function hitSna(url) {
 //const headers = {
 //    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
 //}
-//axios.get('<%= fields.sna_url %>', {
-//    headers,
-//})
-//	.then(({ data }) => console.log(data));
+axios.get('<%= fields.sna_url %>', {
+
+})
+	.then(({ data }) => console.log(data));
 
 
-var request = new XMLHttpRequest();
-request.open("GET", '<%= fields.sna_url %>');
-request.setRequestHeader("Content-Type", "text/plain");
-request.send();
+//var request = new XMLHttpRequest();
+//request.open("GET", '<%= fields.sna_url %>');
+//request.setRequestHeader("Content-Type", "text/plain");
+//request.send();
 
 
 //var response = hitSna("<%= fields.sna_url %>");
