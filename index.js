@@ -173,7 +173,7 @@ async function hitSna(url) {
 //console.log(response);
 
 //window.location.replace = "<%= fields.sna_url %>";
-window.location.href = "<%= fields.sna_url %>";
+window.location.replace = "<%= fields.sna_url %>";
 //    const xhr = new XMLHttpRequest();
 //    xhr.open("POST", "<%= fields.sna_url %>");
 //    xhr.send();
