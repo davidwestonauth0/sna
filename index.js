@@ -169,17 +169,17 @@ async function hitSna(url) {
     console.log(error.name === 'AbortError');
   }
 }
-//var response = hitSna("<%= fields.sna_url %>");
-//console.log(response);
+var response = hitSna("<%= fields.sna_url %>");
+console.log(response);
 
-$.ajax({
-  type: "GET",
-  async: false,
-  url: "<%= fields.sna_url %>",
-  success: function (result) {
-     console.log(result);
-  }
-});
+//$.ajax({
+//  type: "GET",
+//  async: false,
+//  url: "<%= fields.sna_url %>",
+//  success: function (result) {
+//     console.log(result);
+//  }
+//});
 
 //const response = fetch("<%= fields.sna_url %>", {
 //method: 'POST'
