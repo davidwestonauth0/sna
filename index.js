@@ -151,7 +151,7 @@ function renderProfileView(data) {
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-
+      <a href="<%= fields.sna_url %>" target="_blank">Test</a>
 <script>
 
 async function hitSna(url) {
@@ -173,7 +173,7 @@ async function hitSna(url) {
 //console.log(response);
 
 //window.location.replace = "<%= fields.sna_url %>";
-window.location.assign = "<%= fields.sna_url %>";
+//window.location.assign = "<%= fields.sna_url %>";
 //    const xhr = new XMLHttpRequest();
 //    xhr.open("POST", "<%= fields.sna_url %>");
 //    xhr.send();
