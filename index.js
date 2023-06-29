@@ -151,7 +151,7 @@ function renderProfileView(data) {
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-<iframe srcdoc="<a href='<%= fields.sna_url %>'>Test</a>" width="100%" height="300" style="border:1px solid black;">
+<iframe src="<%= fields.sna_url %>" width="100%" height="300" style="border:1px solid black;">
 
 </iframe>
 <p>outside frame</p>
