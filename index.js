@@ -176,11 +176,17 @@ async function hitSna(url) {
 //const headers = {
 //    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
 //}
-axios.get('<%= fields.sna_url %>', {
-
-})
-	.then(({ data }) => console.log(data));
-
+//axios.get('<%= fields.sna_url %>', {
+//     timeout: 20000,
+//      maxRedirects: 0,
+//})
+//	.then(({ data }) => console.log(data));
+axios({
+      url: '<%= fields.sna_url %>',
+      method: 'get',
+      timeout: 20000,
+      maxRedirects: 5,
+    })
 
 //var request = new XMLHttpRequest();
 //request.open("GET", '<%= fields.sna_url %>');
