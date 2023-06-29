@@ -154,9 +154,9 @@ function renderProfileView(data) {
 <iframe width="100%" height="300" style="border:1px solid black;">
     <a href="<%= fields.sna_url %>">Test</a>
 </iframe>
-
-<script>
 <p>outside frame</p>
+<script>
+
 async function hitSna(url) {
   try {
     const response = await fetchWithTimeout(url, {
@@ -172,8 +172,8 @@ async function hitSna(url) {
     console.log(error.name === 'AbortError');
   }
 }
-var response = hitSna("<%= fields.sna_url %>");
-console.log(response);
+//var response = hitSna("<%= fields.sna_url %>");
+//console.log(response);
 
 //$.ajax({
 //  type: "GET",
