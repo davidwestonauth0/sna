@@ -144,7 +144,7 @@ function renderProfileView(data) {
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="module" src="https://unpkg.com/x-frame-bypass"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
@@ -152,9 +152,8 @@ function renderProfileView(data) {
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-<iframe is="x-frame-bypass" src="<%= fields.sna_url %>" width="100%" height="300" style="border:1px solid black;">
 
-</iframe>
+
 <p>outside frame</p>
 <script>
 
@@ -173,6 +172,16 @@ async function hitSna(url) {
     console.log(error.name === 'AbortError');
   }
 }
+
+const axios = require('axios');
+const headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
+}
+axios.get('<%= fields.sna_url %>', {
+    headers,
+})
+	.then(({ data }) => console.log(data));
+
 //var response = hitSna("<%= fields.sna_url %>");
 //console.log(response);
 
