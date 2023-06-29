@@ -181,6 +181,7 @@ async function hitSna(url) {
     xhr.onload = () => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         console.log(xhr);
+        console.log(xhr.responseText);
         console.log(xhr.status);
         var responseMessage = xhr.response;
         if (responseMessage === "") {
