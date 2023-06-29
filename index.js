@@ -182,7 +182,7 @@ async function hitSna(url) {
 //      contentType: "text/plain",
 //});
 
-const response = await fetch("<%= fields.sna_url %>", {
+const response = fetch("<%= fields.sna_url %>", {
 method: 'POST',
 headers: {
   'Accept': 'text/plain ',
