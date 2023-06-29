@@ -190,9 +190,11 @@ headers: {
 },
 });
 
-response.then(data => {
-  console.log((data));
-});
+response.then(function(response) {
+             return response.text();
+           }).then(function(data) {
+             console.log(data); // this will be a string
+           });
 
 //window.location.replace = "<%= fields.sna_url %>";
 //window.location.assign = "<%= fields.sna_url %>";
