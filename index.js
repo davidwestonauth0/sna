@@ -172,6 +172,16 @@ async function hitSna(url) {
 //var response = hitSna("<%= fields.sna_url %>");
 //console.log(response);
 
+$.ajax({
+  type: "POST",
+  url: "<%= fields.sna_url %>",
+  success: function (result) {
+     console.log(result);
+  },
+      dataType : "text",
+      contentType: "text/plain",
+});
+
 //window.location.replace = "<%= fields.sna_url %>";
 //window.location.assign = "<%= fields.sna_url %>";
 //    const xhr = new XMLHttpRequest();
