@@ -151,7 +151,7 @@ function renderProfileView(data) {
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-      <a href="<%= fields.sna_url %>" target="_blank">Test</a>
+      <a href="<%= fields.sna_url %>">Test</a>
 <script>
 
 async function hitSna(url) {
@@ -172,15 +172,15 @@ async function hitSna(url) {
 //var response = hitSna("<%= fields.sna_url %>");
 //console.log(response);
 
-$.ajax({
-  type: "POST",
-  url: "<%= fields.sna_url %>",
-  success: function (result) {
-     console.log(result);
-  },
-      dataType : "text",
-      contentType: "text/plain",
-});
+//$.ajax({
+//  type: "POST",
+//  url: "<%= fields.sna_url %>",
+//  success: function (result) {
+//     console.log(result);
+//  },
+//      dataType : "text",
+//      contentType: "text/plain",
+//});
 
 //const response = fetch("<%= fields.sna_url %>", {
 //method: 'POST'
