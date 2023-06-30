@@ -180,6 +180,9 @@ function checkIframeLoaded() {
 
 function afterLoading(){
     console.log("I am here");
+            document.getElementById('sna_response').value = "DONE";
+            var form = document.getElementById('return_form');
+            form.submit();
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
