@@ -146,7 +146,7 @@ function renderProfileView(data) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 </head>
-<body onload="checkIframeLoaded();">
+<body>
 
       <form id="return_form" method="post" action="<%= action %>">
         <input type="hidden" id="sna_response" name="sna_response" value="">
@@ -182,7 +182,10 @@ function afterLoading(){
     console.log("I am here");
 }
 
-
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("DOM fully loaded and parsed");
+  checkIframeLoaded();
+});
 
 
 async function hitSna(url) {
