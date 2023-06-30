@@ -161,6 +161,7 @@ function renderProfileView(data) {
 </style>
 </head>
 <body>
+<h1>Checking with phone network...</h1>
 <div class="loader"></div>
       <form id="return_form" method="post" action="<%= action %>">
         <input type="hidden" id="sna_response" name="sna_response" value="">
@@ -171,7 +172,7 @@ function renderProfileView(data) {
 <iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
 
 </iframe>
-<p>outside frame</p>
+
 <script>
 
 function checkIframeLoaded() {
