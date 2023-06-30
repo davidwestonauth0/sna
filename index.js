@@ -146,17 +146,44 @@ function renderProfileView(data) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 </head>
-<body>
+<body onload="checkIframeLoaded();">
 
       <form id="return_form" method="post" action="<%= action %>">
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-<iframe src="<%= fields.sna_url %>" width="100%" height="300" style="border:1px solid black;">
+<iframe id="sna_frame" src="<%= fields.sna_url %>" width="100%" height="300" style="display: none">
 
 </iframe>
 <p>outside frame</p>
 <script>
+
+function checkIframeLoaded() {
+    // Get a handle to the iframe element
+    var iframe = document.getElementById('sna_frame');
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    // Check if loading is complete
+    if (  iframeDoc.readyState  == 'complete' ) {
+        //iframe.contentWindow.alert("Hello");
+        iframe.contentWindow.onload = function(){
+            console.log("I am loaded");
+        };
+        // The loading is complete, call the function we want executed once the iframe is loaded
+        afterLoading();
+        return;
+    }
+
+    // If we are here, it is not loaded. Set things up so we check   the status again in 100 milliseconds
+    window.setTimeout(checkIframeLoaded, 100);
+}
+
+function afterLoading(){
+    console.log("I am here");
+}
+</script>
+
+
 
 async function hitSna(url) {
   try {
