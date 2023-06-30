@@ -180,10 +180,11 @@ function checkIframeLoaded() {
 
 function afterLoading(){
     console.log("I am here");
-    setTimeout(() => {console.log("World"); }, 5000);
-            document.getElementById('sna_response').value = "DONE";
-            var form = document.getElementById('return_form');
-            form.submit();
+    document.getElementById('sna_response').value = "DONE";
+                var form = document.getElementById('return_form');
+    setTimeout(() => {form.submit(); }, 5000);
+
+
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
