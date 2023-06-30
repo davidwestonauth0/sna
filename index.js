@@ -181,7 +181,7 @@ function checkIframeLoaded() {
 function afterLoading(){
     console.log("I am here");
 }
-</script>
+
 
 
 
