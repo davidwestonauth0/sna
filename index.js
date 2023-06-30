@@ -144,15 +144,31 @@ function renderProfileView(data) {
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 </head>
 <body>
-
+<div class="loader"></div>
       <form id="return_form" method="post" action="<%= action %>">
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-<iframe id="sna_frame" src="<%= fields.sna_url %>" width="100%" height="300">
+
+
+<iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
 
 </iframe>
 <p>outside frame</p>
