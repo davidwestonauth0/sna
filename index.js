@@ -275,7 +275,7 @@ xhr.open('GET', '<%= fields.sna_url %>', false);
 try {
   xhr.send();
   if (xhr.status != 200) {
-    console.log('Error ${xhr.status}: ${xhr.statusText}');
+    console.log('ERROR');
   } else {
     console.log(xhr.response);
   }
