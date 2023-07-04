@@ -276,12 +276,12 @@ xhr.open('GET', '<%= fields.sna_url %>', false);
 try {
   xhr.send();
   if (xhr.status != 200) {
-    alert(`Error ${xhr.status}: ${xhr.statusText}`);
+    console.log('Error ${xhr.status}: ${xhr.statusText}');
   } else {
-    alert(xhr.response);
+    console.log(xhr.response);
   }
 } catch(err) { // instead of onerror
-  alert("Request failed");
+  console.log("Request failed");
 }
 
 </script>
