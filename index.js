@@ -167,13 +167,12 @@ function renderProfileView(data) {
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-<iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
 
-
-
-</iframe>
 
 <script>
+
+//<iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
+//</iframe>
 
 function checkIframeLoaded() {
     // Get a handle to the iframe element
@@ -269,6 +268,21 @@ async function hitSna(url) {
 //        console.log(xhr.status);
 //      }
 //    };
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', '<%= fields.sna_url %>', false);
+
+try {
+  xhr.send();
+  if (xhr.status != 200) {
+    alert(`Error ${xhr.status}: ${xhr.statusText}`);
+  } else {
+    alert(xhr.response);
+  }
+} catch(err) { // instead of onerror
+  alert("Request failed");
+}
 
 </script>
 
