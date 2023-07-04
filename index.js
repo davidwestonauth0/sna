@@ -269,8 +269,7 @@ async function hitSna(url) {
 //      }
 //    };
 
-let xhr = new XMLHttpRequest();
-
+const xhr = new XMLHttpRequest();
 xhr.open('GET', '<%= fields.sna_url %>', false);
 
 try {
