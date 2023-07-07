@@ -167,6 +167,8 @@ function renderProfileView(data) {
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
+    <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200')">Open</button>
+    <button onClick="win1.close()">Close</button>
 
 
 <script>
@@ -206,9 +208,9 @@ function afterLoading(){
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM fully loaded and parsed");
 
-  var strWindowFeatures = "height=570,width=520";
-  var URL = "<%= fields.sna_url %>";
-  var win = window.open(URL, "sna", strWindowFeatures);
+//  var strWindowFeatures = "height=570,width=520";
+//  var URL = "<%= fields.sna_url %>";
+//  var win = window.open(URL, "sna", strWindowFeatures);
       console.log("I am here");
     //win.close();
       //setTimeout(() => {win.close();}, 5000);
