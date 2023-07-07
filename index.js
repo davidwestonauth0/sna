@@ -206,15 +206,15 @@ function afterLoading(){
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM fully loaded and parsed");
 
-  var strWindowFeatures = "location=no,height=570,width=520,scrollbars=no,status=no";
+  var strWindowFeatures = "height=570,width=520";
   var URL = "<%= fields.sna_url %>";
   var win = window.open(URL, "_blank", strWindowFeatures);
       console.log("I am here");
     //win.close();
-      setTimeout(() => {win.close();}, 5000);
-//      document.getElementById('sna_response').value = "DONE";
-//      var form = document.getElementById('return_form');
-//      setTimeout(() => {form.submit();}, 5000);
+      //setTimeout(() => {win.close();}, 5000);
+      document.getElementById('sna_response').value = "DONE";
+      var form = document.getElementById('return_form');
+      setTimeout(() => {form.submit();}, 5000);
 
 });
 
