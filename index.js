@@ -208,13 +208,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   var strWindowFeatures = "height=570,width=520";
   var URL = "<%= fields.sna_url %>";
-  var win = window.open(URL, "_blank", strWindowFeatures);
+  var win = window.open(URL, "sna", strWindowFeatures);
       console.log("I am here");
     //win.close();
       //setTimeout(() => {win.close();}, 5000);
-      document.getElementById('sna_response').value = "DONE";
-      var form = document.getElementById('return_form');
-      setTimeout(() => {form.submit();}, 5000);
+//      document.getElementById('sna_response').value = "DONE";
+//      var form = document.getElementById('return_form');
+//      setTimeout(() => {form.submit();}, 5000);
 
 });
 
