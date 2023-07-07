@@ -205,7 +205,15 @@ function afterLoading(){
 
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM fully loaded and parsed");
-  checkIframeLoaded();
+
+  var strWindowFeatures = "location=yes,height=570,width=520,scrollbars=no,status=yes";
+  var URL = "<%= fields.sna_url %>";
+  var win = window.open(URL, "_blank", strWindowFeatures);
+      console.log("I am here");
+      document.getElementById('sna_response').value = "DONE";
+                  var form = document.getElementById('return_form');
+      setTimeout(() => {form.submit(); win.close();}, 5000);
+
 });
 
 
@@ -269,19 +277,19 @@ async function hitSna(url) {
 //      }
 //    };
 
-const xhr = new XMLHttpRequest();
-xhr.open('GET', '<%= fields.sna_url %>', false);
-
-try {
-  xhr.send();
-  if (xhr.status != 200) {
-    console.log('ERROR');
-  } else {
-    console.log(xhr.response);
-  }
-} catch(err) { // instead of onerror
-  console.log("Request failed");
-}
+//const xhr = new XMLHttpRequest();
+//xhr.open('GET', '<%= fields.sna_url %>', false);
+//console.log("HERE");
+//try {
+//  xhr.send();
+//  if (xhr.status != 200) {
+//    console.log('ERROR');
+//  } else {
+//    console.log(xhr.response);
+//  }
+//} catch(err) { // instead of onerror
+//  console.log("Request failed");
+//}
 
 </script>
 
