@@ -194,14 +194,6 @@ function checkIframeLoaded() {
 //    window.setTimeout(checkIframeLoaded, 100);
 }
 
-function afterLoading(){
-    console.log("I am here");
-    document.getElementById('sna_response').value = "DONE";
-                var form = document.getElementById('return_form');
-    setTimeout(() => {form.submit(); }, 5000);
-
-
-}
 
 
 
