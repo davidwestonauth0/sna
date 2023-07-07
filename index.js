@@ -163,9 +163,11 @@ function renderProfileView(data) {
 <body>
 <h1>Checking with phone network...</h1>
 <div class="loader"></div>
+      <form id="return_form" method="post" action="<%= action %>">
+        <input type="hidden" id="sna_response" name="sna_response" value="">
+      </form>
 
-
-    <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200')">Open</button>
+    <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200'); afterLoading();">Open</button>
     <button onClick="win1.close()">Close</button>
 
 
@@ -173,6 +175,8 @@ function renderProfileView(data) {
 
 //<iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
 //</iframe>
+
+var thisWindow = window;
 
 function checkIframeLoaded() {
     // Get a handle to the iframe element
@@ -194,6 +198,15 @@ function checkIframeLoaded() {
 //    window.setTimeout(checkIframeLoaded, 100);
 }
 
+function afterLoading(){
+    console.log("I am here");
+    thisWindow.focus();
+    document.getElementById('sna_response').value = "DONE";
+                var form = document.getElementById('return_form');
+    setTimeout(() => {form.submit(); }, 5000);
+
+
+}
 
 
 
