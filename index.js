@@ -178,22 +178,22 @@ function renderProfileView(data) {
 
 function checkIframeLoaded() {
     // Get a handle to the iframe element
-    var iframe = document.getElementById('sna_frame');
-    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-    // Check if loading is complete
-    if (  iframeDoc.readyState  == 'complete' ) {
-        //iframe.contentWindow.alert("Hello");
-        iframe.contentWindow.onload = function(){
-            console.log("I am loaded");
-        };
-        // The loading is complete, call the function we want executed once the iframe is loaded
-        afterLoading();
-        return;
-    }
-
-    // If we are here, it is not loaded. Set things up so we check   the status again in 100 milliseconds
-    window.setTimeout(checkIframeLoaded, 100);
+//    var iframe = document.getElementById('sna_frame');
+//    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+//
+//    // Check if loading is complete
+//    if (  iframeDoc.readyState  == 'complete' ) {
+//        //iframe.contentWindow.alert("Hello");
+//        iframe.contentWindow.onload = function(){
+//            console.log("I am loaded");
+//        };
+//        // The loading is complete, call the function we want executed once the iframe is loaded
+//        afterLoading();
+//        return;
+//    }
+//
+//    // If we are here, it is not loaded. Set things up so we check   the status again in 100 milliseconds
+//    window.setTimeout(checkIframeLoaded, 100);
 }
 
 function afterLoading(){
@@ -205,20 +205,7 @@ function afterLoading(){
 
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  console.log("DOM fully loaded and parsed");
 
-//  var strWindowFeatures = "height=570,width=520";
-//  var URL = "<%= fields.sna_url %>";
-//  var win = window.open(URL, "sna", strWindowFeatures);
-      console.log("I am here");
-    //win.close();
-      //setTimeout(() => {win.close();}, 5000);
-//      document.getElementById('sna_response').value = "DONE";
-//      var form = document.getElementById('return_form');
-//      setTimeout(() => {form.submit();}, 5000);
-
-});
 
 
 async function hitSna(url) {
