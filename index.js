@@ -177,20 +177,20 @@ win=window.open(mypage,myname,settings);}
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-    <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200'); setTimeout(() => {win1.close(); }, 7000);">Open</button>
+    <button onClick="var thisWindow = window; win1=open('<%= fields.sna_url %>','win1', 'width=200,height=200'); setTimeout(() => {thisWindow;focus(); win1.close(); afterLoading(); }, 7000);">Continue</button>
     <button onClick="win1.close()">Close</button>
 <button onClick="afterLoading();">Done</button>
 <p><b>iPhones</b></p>
 <p><a href="." onclick="NewWindow(this.href,'mywin','320','480','no','center');return false" onfocus="this.blur()">320x480</a> (iPhone Basic)<br></p>
 
 <script>
-addEventListener("DOMContentLoaded", (event) => {
-    var currentWin = window;
-    setTimeout(() => {NewWindow("<%= fields.sna_url %>",'mywin','10','10','no','center'); }, 2000);
-    setTimeout(() => {currentWin.focus(); form.submit(); }, 7000);
-
-
-});
+//addEventListener("DOMContentLoaded", (event) => {
+//    var currentWin = window;
+//    setTimeout(() => {NewWindow("<%= fields.sna_url %>",'mywin','10','10','no','center'); }, 2000);
+//    setTimeout(() => {currentWin.focus(); mywin.close(); form.submit(); }, 7000);
+//
+//
+//});
 //<iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
 //</iframe>
 
@@ -218,9 +218,9 @@ function checkIframeLoaded() {
 
 function afterLoading(){
     console.log("I am here");
-    thisWindow.focus();
+    //thisWindow.focus();
     document.getElementById('sna_response').value = "DONE";
-                var form = document.getElementById('return_form');
+    var form = document.getElementById('return_form');
     setTimeout(() => {form.submit(); }, 5000);
 
 
