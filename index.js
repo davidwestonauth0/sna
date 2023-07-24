@@ -159,6 +159,7 @@ function renderProfileView(data) {
   100% { transform: rotate(360deg); }
 }
 </style>
+<script>
 var win=null;
 function NewWindow(mypage,myname,w,h,scroll,pos){
 if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
