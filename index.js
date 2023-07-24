@@ -177,7 +177,7 @@ win=window.open(mypage,myname,settings);}
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-    <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200');">Open</button>
+    <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200'); setTimeout(() => {win1.close(); }, 7000);">Open</button>
     <button onClick="win1.close()">Close</button>
 <button onClick="afterLoading();">Done</button>
 <p><b>iPhones</b></p>
