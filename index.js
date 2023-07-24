@@ -177,7 +177,7 @@ win=window.open(mypage,myname,settings);}
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
 
-    <button onClick="var thisWindow = window; win1=open('<%= fields.sna_url %>','win1', 'width=200,height=200'); setTimeout(() => {thisWindow;focus(); win1.close(); afterLoading(); }, 7000);">Continue</button>
+    <button onClick="setTimeout(() => {console.log('here') }, 7000); win1=open('<%= fields.sna_url %>','win1', 'width=200,height=200'); setTimeout(() => {afterLoading(); }, 7000);">Continue</button>
     <button onClick="win1.close()">Close</button>
 <button onClick="afterLoading();">Done</button>
 <p><b>iPhones</b></p>
@@ -218,6 +218,8 @@ function checkIframeLoaded() {
 
 function afterLoading(){
     console.log("I am here");
+    thisWindow;focus();
+    win1.close();
     //thisWindow.focus();
     document.getElementById('sna_response').value = "DONE";
     var form = document.getElementById('return_form');
