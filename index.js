@@ -159,6 +159,15 @@ function renderProfileView(data) {
   100% { transform: rotate(360deg); }
 }
 </style>
+var win=null;
+function NewWindow(mypage,myname,w,h,scroll,pos){
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
+win=window.open(mypage,myname,settings);}
+// -->
+</script>
 </head>
 <body>
 <h1>Checking with phone network...</h1>
@@ -170,6 +179,8 @@ function renderProfileView(data) {
     <button onClick="win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200');">Open</button>
     <button onClick="win1.close()">Close</button>
 <button onClick="afterLoading();">Done</button>
+<p><b>iPhones</b></p>
+<p><a href="." onclick="NewWindow(this.href,'mywin','320','480','no','center');return false" onfocus="this.blur()">320x480</a> (iPhone Basic)<br></p>
 
 <script>
 
