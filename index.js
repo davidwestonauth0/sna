@@ -184,7 +184,13 @@ win=window.open(mypage,myname,settings);}
 <p><a href="." onclick="NewWindow(this.href,'mywin','320','480','no','center');return false" onfocus="this.blur()">320x480</a> (iPhone Basic)<br></p>
 
 <script>
+addEventListener("DOMContentLoaded", (event) => {
+    var currentWin = window;
+    var win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200');
+    setTimeout(() => {currentWin.focus(); form.submit(); }, 7000);
 
+
+});
 //<iframe id="sna_frame" src="<%= fields.sna_url %>" style="display:none">
 //</iframe>
 
