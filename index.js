@@ -186,7 +186,8 @@ win=window.open(mypage,myname,settings);}
 <script>
 addEventListener("DOMContentLoaded", (event) => {
     var currentWin = window;
-    var win1=open('<%= fields.sna_url %>','winname', 'width=200,height=200');
+    setTimeout(() => {NewWindow(this.href,'mywin','10','10','no','center'); }, 2000);
+
     setTimeout(() => {currentWin.focus(); form.submit(); }, 7000);
 
 
