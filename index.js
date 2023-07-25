@@ -176,12 +176,8 @@ win=window.open(mypage,myname,settings);}
       <form id="return_form" method="post" action="<%= action %>">
         <input type="hidden" id="sna_response" name="sna_response" value="">
       </form>
-
-    <button onClick="win1=open('<%= fields.sna_url %>','win1', 'width=200,height=200'); setTimeout(() => {afterLoading(); }, 7000);">Continue</button>
-    <button onClick="win1.close()">Close</button>
-<button onClick="afterLoading();">Done</button>
-<p><b>iPhones</b></p>
-<p><a href="." onclick="NewWindow(this.href,'mywin','320','480','no','center');return false" onfocus="this.blur()">320x480</a> (iPhone Basic)<br></p>
+<h2>Make sure wifi is disabled then click continue</h2>
+    <button onClick="win1=open('<%= fields.sna_url %>','win1', 'width=200,height=200'); setTimeout(() => {afterLoading(); }, 5000);">Continue</button>
 
 <script>
 //addEventListener("DOMContentLoaded", (event) => {
@@ -220,10 +216,10 @@ function afterLoading(){
     console.log("I am here");
     thisWindow;focus();
     win1.close();
-    //thisWindow.focus();
+    thisWindow.focus();
     document.getElementById('sna_response').value = "DONE";
     var form = document.getElementById('return_form');
-    setTimeout(() => {form.submit(); }, 5000);
+    form.submit();
 
 
 }
